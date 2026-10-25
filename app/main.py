@@ -5,7 +5,7 @@ from app.routes.health import router as health_router
 from app.database.database import Base, engine
 from app.database import models
 from app.routes.auth import router as auth_router
-
+from app.routes.tickets import router as tickets_router
 
 app = FastAPI(
     title=settings.app_name,
@@ -14,6 +14,7 @@ app = FastAPI(
 
 app.include_router(health_router)
 app.include_router(auth_router)
+app.include_router(tickets_router)
 
 Base.metadata.create_all(bind=engine)
 

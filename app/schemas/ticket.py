@@ -33,3 +33,11 @@ class TicketResponse(BaseModel):
     updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+from pydantic import BaseModel
+
+class TicketStatusUpdate(BaseModel):
+    status: TicketStatus
+
+class TicketFinalResponseUpdate(BaseModel):
+    final_response: str
