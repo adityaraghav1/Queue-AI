@@ -5,12 +5,12 @@ class Settings(BaseSettings):
     app_name: str = "QueueAI"
     app_version: str = "0.1.0"
     debug: bool = True
+    groq_api_key: str = ""
 
     database_url: str = "sqlite:///./queueai.db"
     secret_key: str
     algorithm: str = "HS256"
-    access_token_expire_min: int =60 
-
+    access_token_expire_min: int = 60
 
     model_config = SettingsConfigDict(
         env_file=".env",

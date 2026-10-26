@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
@@ -10,6 +12,10 @@ from app.schemas.ticket import (
     TicketStatusUpdate,
     TicketFinalResponseUpdate,
 )
+from app.services.ai_triage import analyze_ticket
+
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(
     prefix="/tickets",
@@ -27,10 +33,25 @@ def create_ticket(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
+    try:
+        ai_result = analyze_ticket(
+            subject=ticket_data.subject,
+            description=ticket_data.description
+        )
+    except Exception:
+        logger.exception("AI ticket analysis failed")
+        ai_result = None
+
     new_ticket = Ticket(
         customer_id=current_user.id,
         subject=ticket_data.subject,
-        description=ticket_data.description
+        description=ticket_data.description,
+        category=ai_result["category"] if ai_result else None,
+        priority=ai_result["priority"] if ai_result else None,
+        sentiment=ai_result["sentiment"] if ai_result else None,
+        suggested_response=(
+            ai_result["suggested_response"] if ai_result else None
+        )
     )
 
     db.add(new_ticket)
@@ -38,6 +59,7 @@ def create_ticket(
     db.refresh(new_ticket)
 
     return new_ticket
+
 
 @router.get(
     "/my",
@@ -56,6 +78,7 @@ def get_my_tickets(
 
     return tickets
 
+
 @router.get(
     "/{ticket_id}",
     response_model=TicketResponse
@@ -72,11 +95,12 @@ def get_ticket(
 
     if ticket is None:
         raise HTTPException(
-            status_code=404,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="Ticket not found"
         )
 
     return ticket
+
 
 @router.get(
     "/",
@@ -94,6 +118,7 @@ def get_all_tickets(
 
     return tickets
 
+
 @router.patch(
     "/{ticket_id}/status",
     response_model=TicketResponse
@@ -110,7 +135,7 @@ def update_ticket_status(
 
     if ticket is None:
         raise HTTPException(
-            status_code=404,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="Ticket not found"
         )
 
@@ -120,6 +145,7 @@ def update_ticket_status(
     db.refresh(ticket)
 
     return ticket
+
 
 @router.patch(
     "/{ticket_id}/response",
@@ -137,7 +163,7 @@ def update_ticket_response(
 
     if ticket is None:
         raise HTTPException(
-            status_code=404,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="Ticket not found"
         )
 
