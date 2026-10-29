@@ -13,6 +13,7 @@ from app.schemas.ticket import (
     TicketFinalResponseUpdate,
 )
 from app.services.ai_triage import analyze_ticket
+from app.services.email_service import send_email
 
 
 logger = logging.getLogger(__name__)
@@ -172,5 +173,41 @@ def update_ticket_response(
 
     db.commit()
     db.refresh(ticket)
+
+    # Send a notification after the ticket is saved.
+    try:
+        customer = db.query(User).filter(
+            User.id == ticket.customer_id
+        ).first()
+
+        if customer is None:
+            logger.error(
+                "Customer not found for resolved ticket ID %s",
+                ticket.id
+            )
+        else:
+            email_sent = send_email(
+                recipient=customer.email,
+                subject=f"Your QueueAI ticket #{ticket.id} is resolved",
+                body=(
+                    f"Hello {customer.name},\n\n"
+                    f"Your support ticket '{ticket.subject}' "
+                    "has been marked as resolved.\n\n"
+                    f"Support response:\n{ticket.final_response}\n\n"
+                    "Thank you for contacting QueueAI support."
+                )
+            )
+
+            if not email_sent:
+                logger.warning(
+                    "Resolution notification was not sent for ticket ID %s",
+                    ticket.id
+                )
+
+    except Exception:
+        logger.exception(
+            "Notification processing failed for ticket ID %s",
+            ticket.id
+        )
 
     return ticket

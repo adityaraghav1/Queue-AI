@@ -84,3 +84,28 @@ def customer_token(client, db_session):
     assert response.status_code == 200, response.text
 
     return response.json()["access_token"]
+
+@pytest.fixture
+def admin_token(client, db_session):
+    admin = User(
+        name="Test Admin",
+        email="testadmin@example.com",
+        password_hash=hash_password("adminpassword123"),
+        role=UserRole.ADMIN
+    )
+
+    db_session.add(admin)
+    db_session.commit()
+    db_session.refresh(admin)
+
+    response = client.post(
+        "/auth/login",
+        json={
+            "email": "testadmin@example.com",
+            "password": "adminpassword123"
+        }
+    )
+
+    assert response.status_code == 200, response.text
+
+    return response.json()["access_token"]
