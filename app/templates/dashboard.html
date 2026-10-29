@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | QueueAI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="/dashboard" class="brand">
+                <span class="brand-icon">Q</span>
+                <span>Queue<span class="brand-highlight">AI</span></span>
+            </a>
+
+            <div class="sidebar-section-label">WORKSPACE</div>
+
+            <nav class="sidebar-nav">
+                <a href="/dashboard" class="nav-item active">
+                    <span class="nav-icon">▦</span>
+                    Dashboard
+                </a>
+
+                <a href="#tickets-section" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    My Tickets
+                </a>
+
+                <button type="button" class="nav-item" id="open-ticket-button">
+                    <span class="nav-icon">＋</span>
+                    Create Ticket
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-user">
+                    <div class="user-avatar" id="user-avatar">U</div>
+
+                    <div class="sidebar-user-info">
+                        <strong id="user-name">Loading...</strong>
+                        <small id="user-email">Loading...</small>
+                    </div>
+                </div>
+
+                <button type="button" class="logout-button" id="logout-button">
+                    <span>↪</span> Sign out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+                <div>
+                    <p class="welcome-label">CUSTOMER WORKSPACE</p>
+                    <h1>Dashboard</h1>
+                    <p class="dashboard-subtitle">
+                        Track your support requests and get the help you need.
+                    </p>
+                </div>
+
+                <button type="button" class="primary-button header-create-button" id="header-create-button">
+                    <span>＋ New Ticket</span>
+                </button>
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Tickets</span>
+                        <span class="stat-icon blue-icon">▤</span>
+                    </div>
+                    <h2 id="total-tickets">—</h2>
+                    <p>All your support requests</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Open Tickets</span>
+                        <span class="stat-icon purple-icon">◷</span>
+                    </div>
+                    <h2 id="open-tickets">—</h2>
+                    <p>Waiting for resolution</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>In Progress</span>
+                        <span class="stat-icon orange-icon">↗</span>
+                    </div>
+                    <h2 id="progress-tickets">—</h2>
+                    <p>Currently being handled</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Resolved</span>
+                        <span class="stat-icon green-icon">✓</span>
+                    </div>
+                    <h2 id="resolved-tickets">—</h2>
+                    <p>Successfully resolved</p>
+                </article>
+
+            </section>
+
+            <!-- Ticket Table -->
+            <section class="tickets-panel" id="tickets-section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>My Tickets</h2>
+                        <p>View and track your recent support requests.</p>
+                    </div>
+
+                    <button type="button" class="text-button" id="refresh-tickets">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+                <div id="dashboard-message" class="message" role="status" aria-live="polite"></div>
+
+                <div class="table-wrapper">
+                    <table class="tickets-table">
+                        <thead>
+                            <tr>
+                                <th>Ticket</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tickets-table-body">
+                            <tr>
+                                <td colspan="5" class="empty-state">
+                                    Loading your tickets...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <footer class="dashboard-footer">
+                QueueAI · Intelligent customer support
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- Create Ticket Modal -->
+    <div class="modal-overlay" id="ticket-modal" hidden>
+        <section class="ticket-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+            <div class="modal-heading">
+                <div>
+                    <p class="welcome-label">SUPPORT REQUEST</p>
+                    <h2 id="modal-title">Create a ticket</h2>
+                    <p>Describe your issue and let QueueAI help triage it.</p>
+                </div>
+
+                <button type="button" class="modal-close" id="close-ticket-button" aria-label="Close">
+                    ×
+                </button>
+            </div>
+
+            <form id="ticket-form">
+                <div class="form-group">
+                    <label for="ticket-subject">Subject</label>
+                    <input
+                        type="text"
+                        id="ticket-subject"
+                        name="subject"
+                        placeholder="Briefly describe your issue"
+                        maxlength="200"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="ticket-description">Description</label>
+                    <textarea
+                        id="ticket-description"
+                        name="description"
+                        rows="5"
+                        placeholder="Explain the issue in more detail..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div id="ticket-form-message" class="message" role="status" aria-live="polite"></div>
+
+                <div class="modal-actions">
+                    <button type="button" class="secondary-button" id="cancel-ticket-button">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="primary-button" id="submit-ticket-button">
+                        <span>Submit Ticket</span>
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </form>
+
+        </section>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+
+</body>
+</html>

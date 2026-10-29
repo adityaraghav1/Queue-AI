@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | QueueAI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <main class="login-layout">
+
+        <section class="brand-panel">
+            <a href="/" class="brand">
+                <span class="brand-icon">Q</span>
+                <span>Queue<span class="brand-highlight">AI</span></span>
+            </a>
+
+            <div class="hero-content">
+                <span class="eyebrow">
+                    <span class="status-dot"></span>
+                    INTELLIGENT SUPPORT PLATFORM
+                </span>
+
+                <h1>Support that<br>thinks <span>smarter.</span></h1>
+
+                <p>
+                    Manage customer requests, automate ticket triage,
+                    and deliver better support with AI-powered assistance.
+                </p>
+
+                <div class="feature-list">
+                    <div class="feature">
+                        <span class="feature-icon">✦</span>
+                        <div>
+                            <strong>AI-powered triage</strong>
+                            <small>Automatically categorize incoming tickets</small>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <span class="feature-icon">↗</span>
+                        <div>
+                            <strong>Smarter workflows</strong>
+                            <small>Keep every support request organized</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="brand-footer">Built for better customer experiences.</p>
+        </section>
+
+        <section class="form-panel">
+            <div class="login-card">
+
+                <div class="mobile-brand brand">
+                    <span class="brand-icon">Q</span>
+                    <span>Queue<span class="brand-highlight">AI</span></span>
+                </div>
+
+                <div class="form-heading">
+                    <span class="welcome-label">WELCOME BACK</span>
+                    <h2>Sign in to QueueAI</h2>
+                    <p>Enter your details to access your workspace.</p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="password">Password</label>
+                        </div>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+
+                    <div id="login-message" class="message" role="status" aria-live="polite"></div>
+
+                    <button type="submit" id="login-button" class="primary-button">
+                        <span>Sign in</span>
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>NEW TO QUEUEAI?</span>
+                </div>
+
+                <a href="/register" class="secondary-button">
+                    Create an account
+                </a>
+
+                <p class="security-note">
+                    <span>♧</span> Secure authentication powered by QueueAI
+                </p>
+            </div>
+
+            <p class="copyright">© 2026 QueueAI. All rights reserved.</p>
+        </section>
+
+    </main>
+
+    <script src="/static/js/login.js"></script>
+</body>
+</html>

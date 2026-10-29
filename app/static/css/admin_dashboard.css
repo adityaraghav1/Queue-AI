@@ -1,0 +1,156 @@
+/* Admin dashboard layout */
+
+.admin-modal-card {
+    width: min(620px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.admin-ticket-details {
+    display: grid;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.admin-ticket-details p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.admin-ticket-details strong {
+    color: var(--text-primary);
+}
+
+.ticket-description-box {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    min-height: 44px;
+}
+
+.admin-modal-card .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.admin-modal-card .form-group label {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-modal-card select,
+.admin-modal-card textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.admin-modal-card select:focus,
+.admin-modal-card textarea:focus {
+    border-color: var(--blue);
+}
+
+.admin-modal-card textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.admin-modal-card select option {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.admin-modal-card .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#admin-dashboard-message:empty,
+#admin-ticket-form-message:empty {
+    display: none;
+}
+
+/* Table actions */
+
+.admin-ticket-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.admin-ticket-actions button {
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.admin-view-button {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.admin-view-button:hover {
+    border-color: var(--blue);
+    background: var(--bg-card);
+}
+
+#admin-refresh-button:disabled,
+#admin-save-ticket-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Responsive layout */
+
+@media (max-width: 768px) {
+    .admin-modal-card {
+        padding: 20px;
+    }
+
+    .admin-modal-card .modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .admin-modal-card .modal-actions button {
+        width: 100%;
+    }
+
+    .admin-ticket-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-modal-card {
+        max-height: 95vh;
+    }
+
+    .ticket-description-box {
+        padding: 11px;
+        font-size: 13px;
+    }
+}
