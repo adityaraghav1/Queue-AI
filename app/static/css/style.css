@@ -1,4 +1,3 @@
-
 /* ---------- Global styles ---------- */
 
 :root {
@@ -14,6 +13,13 @@
     --purple: #9b6dff;
 
     --gradient: linear-gradient(120deg, #5487ff, #a16bff);
+
+    /* Consistent typography scale */
+    --font-sans: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    --font-size-xs: 11px;
+    --font-size-sm: 12px;
+    --font-size-base: 14px;
+    --font-size-lg: 16px;
 }
 
 * {
@@ -22,12 +28,23 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 body {
     min-height: 100vh;
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
     color: var(--text-primary);
     background: var(--bg-primary);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 a {
@@ -36,7 +53,9 @@ a {
 }
 
 button,
-input {
+input,
+select,
+textarea {
     font: inherit;
 }
 
@@ -271,6 +290,7 @@ input {
     font-size: clamp(25px, 2.5vw, 31px);
     font-weight: 700;
     letter-spacing: -1px;
+    line-height: 1.25;
 }
 
 .form-heading p {
