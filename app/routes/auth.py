@@ -1,17 +1,22 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+
+import secrets
+
+from fastapi import APIRouter, Depends, HTTPException, status, Header
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+
+from app.core.config import settings
 from app.core.security import (
     create_access_token,
     hash_password,
     verify_password
 )
-
 from app.schemas.auth import LoginRequest, TokenResponse
 from app.database.database import get_db
 from app.database.models import User, UserRole
 from app.schemas.user import UserCreate, UserResponse
 from app.core.dependencies import get_current_user, require_admin
+
 
 router = APIRouter(
     prefix="/auth",
@@ -51,6 +56,7 @@ def register_user(
 
     return new_user
 
+
 @router.post(
     "/login",
     response_model=TokenResponse
@@ -63,13 +69,7 @@ def login_user(
         select(User).where(User.email == login_data.email)
     )
 
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid email or password"
-        )
-
-    if not verify_password(
+    if not user or not verify_password(
         login_data.password,
         user.password_hash
     ):
@@ -85,6 +85,7 @@ def login_user(
         "token_type": "bearer"
     }
 
+
 @router.get(
     "/me",
     response_model=UserResponse
@@ -94,6 +95,7 @@ def get_me(
 ):
     return current_user
 
+
 @router.get("/admin-test")
 def admin_test(
     current_user: User = Depends(require_admin)
@@ -102,3 +104,55 @@ def admin_test(
         "message": "Admin access granted",
         "user": current_user.email
     }
+
+
+# TEMPORARY: Create production admin account
+@router.post(
+    "/bootstrap-admin",
+    response_model=UserResponse,
+    status_code=status.HTTP_201_CREATED
+)
+def bootstrap_admin(
+    user_data: UserCreate,
+    bootstrap_token: str = Header(
+        alias="X-Bootstrap-Token"
+    ),
+    db: Session = Depends(get_db)
+):
+    if not settings.admin_bootstrap_token:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin bootstrap is disabled"
+        )
+
+    if not secrets.compare_digest(
+        bootstrap_token,
+        settings.admin_bootstrap_token
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Invalid bootstrap token"
+        )
+
+    existing_user = db.scalar(
+        select(User).where(User.email == user_data.email)
+    )
+
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Email is already registered"
+        )
+
+    admin = User(
+        name=user_data.name,
+        email=user_data.email,
+        password_hash=hash_password(user_data.password),
+        role=UserRole.ADMIN
+    )
+
+    db.add(admin)
+    db.commit()
+    db.refresh(admin)
+
+    return admin
