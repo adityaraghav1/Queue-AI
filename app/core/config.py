@@ -15,6 +15,7 @@ class Settings(BaseSettings):
 
     # Authentication configuration
     secret_key: str
+    admin_bootstrap_token: str = ""
     algorithm: str = "HS256"
     access_token_expire_min: int = 60
 
