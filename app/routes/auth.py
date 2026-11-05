@@ -1,11 +1,6 @@
-
-import secrets
-
-from fastapi import APIRouter, Depends, HTTPException, status, Header
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-
-from app.core.config import settings
 from app.core.security import (
     create_access_token,
     hash_password,
@@ -104,55 +99,3 @@ def admin_test(
         "message": "Admin access granted",
         "user": current_user.email
     }
-
-
-# TEMPORARY: Create production admin account
-@router.post(
-    "/bootstrap-admin",
-    response_model=UserResponse,
-    status_code=status.HTTP_201_CREATED
-)
-def bootstrap_admin(
-    user_data: UserCreate,
-    bootstrap_token: str = Header(
-        alias="X-Bootstrap-Token"
-    ),
-    db: Session = Depends(get_db)
-):
-    if not settings.admin_bootstrap_token:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Admin bootstrap is disabled"
-        )
-
-    if not secrets.compare_digest(
-        bootstrap_token,
-        settings.admin_bootstrap_token
-    ):
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Invalid bootstrap token"
-        )
-
-    existing_user = db.scalar(
-        select(User).where(User.email == user_data.email)
-    )
-
-    if existing_user:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Email is already registered"
-        )
-
-    admin = User(
-        name=user_data.name,
-        email=user_data.email,
-        password_hash=hash_password(user_data.password),
-        role=UserRole.ADMIN
-    )
-
-    db.add(admin)
-    db.commit()
-    db.refresh(admin)
-
-    return admin
