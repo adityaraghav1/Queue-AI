@@ -1,18 +1,18 @@
 /* ---------- Global styles ---------- */
 
 :root {
-    --bg-primary: #080b16;
-    --bg-secondary: #0e1222;
-    --bg-card: #11172a;
-    --border: rgba(148, 163, 184, 0.16);
+    --bg-primary: #0b0b0b;
+    --bg-secondary: #111111;
+    --bg-card: #171717;
+    --border: rgba(255, 255, 255, 0.10);
 
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a1a1aa;
 
-    --blue: #5487ff;
-    --purple: #9b6dff;
+    --blue: #d4d4d8;
+    --purple: #a1a1aa;
 
-    --gradient: linear-gradient(120deg, #5487ff, #a16bff);
+    --gradient: linear-gradient(120deg, #f5f5f5, #a3a3a3);
 
     /* Consistent typography scale */
     --font-sans: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
@@ -80,12 +80,12 @@ textarea {
     background:
         radial-gradient(
             ellipse at 20% 20%,
-            rgba(78, 91, 220, 0.2),
+            rgba(255, 255, 255, 0.045),
             transparent 48%
         ),
         radial-gradient(
             ellipse at 85% 80%,
-            rgba(142, 73, 230, 0.13),
+            rgba(255, 255, 255, 0.025),
             transparent 45%
         ),
         var(--bg-secondary);
@@ -101,11 +101,11 @@ textarea {
     right: -180px;
     top: 25%;
 
-    border: 1px solid rgba(113, 120, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 50%;
     box-shadow:
-        0 0 0 45px rgba(113, 120, 255, 0.025),
-        0 0 0 90px rgba(113, 120, 255, 0.02);
+        0 0 0 45px rgba(255, 255, 255, 0.015),
+        0 0 0 90px rgba(255, 255, 255, 0.01);
 
     pointer-events: none;
 }
@@ -127,16 +127,16 @@ textarea {
     width: 38px;
     height: 38px;
 
-    color: white;
+    color: #111111;
     background: var(--gradient);
     border-radius: 12px;
 
     font-size: 23px;
-    box-shadow: 0 5px 24px rgba(99, 102, 241, 0.28);
+    box-shadow: 0 5px 24px rgba(255, 255, 255, 0.08);
 }
 
 .brand-highlight {
-    color: #9a8aff;
+    color: #d4d4d8;
 }
 
 .hero-content {
@@ -152,9 +152,9 @@ textarea {
     gap: 9px;
     padding: 9px 12px;
 
-    color: #b8c5ff;
-    background: rgba(99, 102, 241, 0.09);
-    border: 1px solid rgba(129, 140, 248, 0.2);
+    color: #d4d4d8;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 30px;
 
     font-size: 10px;
@@ -165,9 +165,9 @@ textarea {
 .status-dot {
     width: 7px;
     height: 7px;
-    background: #7c9cff;
+    background: #a3a3a3;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(124, 156, 255, 0.8);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
 
 .hero-content h1 {
@@ -180,8 +180,8 @@ textarea {
 }
 
 .hero-content h1 span {
-    color: #9a83ff;
-    background: linear-gradient(100deg, #73a0ff, #b58aff);
+    color: #d4d4d8;
+    background: linear-gradient(100deg, #f5f5f5, #a3a3a3);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -214,9 +214,9 @@ textarea {
     width: 44px;
     height: 44px;
 
-    color: #b9a4ff;
-    background: rgba(132, 102, 255, 0.11);
-    border: 1px solid rgba(132, 102, 255, 0.17);
+    color: #d4d4d8;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 12px;
 
     font-size: 21px;
@@ -242,7 +242,7 @@ textarea {
 .brand-footer {
     position: relative;
     z-index: 1;
-    color: #68738b;
+    color: #737373;
     font-size: 11px;
 }
 
@@ -258,7 +258,7 @@ textarea {
     background:
         radial-gradient(
             ellipse at 50% 40%,
-            rgba(46, 65, 125, 0.09),
+            rgba(255, 255, 255, 0.025),
             transparent 65%
         ),
         var(--bg-primary);
@@ -279,7 +279,7 @@ textarea {
 }
 
 .welcome-label {
-    color: #9b8aff;
+    color: #d4d4d8;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -309,7 +309,7 @@ textarea {
     display: block;
     margin-bottom: 10px;
 
-    color: #dce3f0;
+    color: #dce3e8;
     font-size: 12px;
     font-weight: 600;
 }
@@ -320,8 +320,8 @@ textarea {
     padding: 0 15px;
 
     color: var(--text-primary);
-    background: rgba(17, 23, 42, 0.8);
-    border: 1px solid #252d43;
+    background: rgba(23, 23, 23, 0.8);
+    border: 1px solid #303030;
     border-radius: 9px;
 
     outline: none;
@@ -334,17 +334,17 @@ textarea {
 }
 
 .form-group input::placeholder {
-    color: #64708a;
+    color: #737373;
 }
 
 .form-group input:hover {
-    border-color: #384361;
+    border-color: #525252;
 }
 
 .form-group input:focus {
-    background: #11172a;
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(84, 135, 255, 0.12);
+    background: #171717;
+    border-color: #a3a3a3;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
 }
 
 .primary-button {
@@ -356,7 +356,7 @@ textarea {
     min-height: 49px;
     padding: 0 17px;
 
-    color: white;
+    color: #111111;
     background: var(--gradient);
     border: none;
     border-radius: 9px;
@@ -373,7 +373,7 @@ textarea {
 
 .primary-button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 25px rgba(103, 105, 255, 0.24);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08);
 }
 
 .primary-button:active {
@@ -407,7 +407,7 @@ textarea {
 }
 
 .divider span {
-    color: #77839c;
+    color: #737373;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -420,9 +420,9 @@ textarea {
     width: 100%;
     min-height: 47px;
 
-    color: #dce5f7;
+    color: #e5e5e5;
     background: transparent;
-    border: 1px solid #2a344d;
+    border: 1px solid #303030;
     border-radius: 9px;
 
     font-size: 12px;
@@ -434,8 +434,8 @@ textarea {
 }
 
 .secondary-button:hover {
-    background: rgba(84, 135, 255, 0.07);
-    border-color: #596da4;
+    background: rgba(255, 255, 255, 0.035);
+    border-color: #525252;
 }
 
 /* ---------- Feedback and footer ---------- */
@@ -471,18 +471,18 @@ textarea {
     gap: 7px;
 
     margin-top: 30px;
-    color: #75819a;
+    color: #737373;
     font-size: 10px;
 }
 
 .security-note span {
-    color: #8da3ff;
+    color: #d4d4d8;
     font-size: 15px;
 }
 
 .copyright {
     margin-top: 55px;
-    color: #626d83;
+    color: #737373;
     font-size: 10px;
     text-align: center;
 }
