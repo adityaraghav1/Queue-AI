@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | QueueAI</title>
+    <title>Sign In | QueueAI</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
@@ -22,38 +22,46 @@
             </a>
 
             <div class="hero-content">
-                <span class="eyebrow">
-                    <span class="status-dot"></span>
-                    INTELLIGENT SUPPORT PLATFORM
-                </span>
+                <span class="eyebrow">Intelligent Support Platform</span>
 
                 <h1>Support that<br>thinks <span>smarter.</span></h1>
 
                 <p>
                     Manage customer requests, automate ticket triage,
-                    and deliver better support with AI-powered assistance.
+                    and deliver faster resolutions with AI-assisted workflows.
                 </p>
 
                 <div class="feature-list">
                     <div class="feature">
-                        <span class="feature-icon">✦</span>
+                        <span class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3z"/>
+                                <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/>
+                            </svg>
+                        </span>
                         <div>
-                            <strong>AI-powered triage</strong>
-                            <small>Automatically categorize incoming tickets</small>
+                            <strong>Automated AI Triage</strong>
+                            <small>Categorize, prioritize, and draft replies as tickets arrive.</small>
                         </div>
                     </div>
 
                     <div class="feature">
-                        <span class="feature-icon">↗</span>
+                        <span class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 6h18"/>
+                                <path d="M7 12h10"/>
+                                <path d="M10 18h4"/>
+                            </svg>
+                        </span>
                         <div>
-                            <strong>Smarter workflows</strong>
-                            <small>Keep every support request organized</small>
+                            <strong>Unified Ticket Tracking</strong>
+                            <small>Keep customers and support teams aligned from open to resolved.</small>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p class="brand-footer">Built for better customer experiences.</p>
+            <p class="brand-footer">QueueAI Support Automation</p>
         </section>
 
         <section class="form-panel">
@@ -65,9 +73,9 @@
                 </div>
 
                 <div class="form-heading">
-                    <span class="welcome-label">WELCOME BACK</span>
+                    <span class="welcome-label">Welcome back</span>
                     <h2>Sign in to QueueAI</h2>
-                    <p>Enter your details to access your workspace.</p>
+                    <p>Enter your credentials to access your support workspace.</p>
                 </div>
 
                 <form id="login-form">
@@ -77,7 +85,7 @@
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="you@example.com"
+                            placeholder="you@company.com"
                             autocomplete="email"
                             required
                         >
@@ -107,7 +115,7 @@
                 </form>
 
                 <div class="divider">
-                    <span>NEW TO QUEUEAI?</span>
+                    <span>New to QueueAI?</span>
                 </div>
 
                 <a href="/register" class="secondary-button">
@@ -115,7 +123,11 @@
                 </a>
 
                 <p class="security-note">
-                    <span>♧</span> Secure authentication powered by QueueAI
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                    <span>JWT-authenticated workspace</span>
                 </p>
             </div>
 
