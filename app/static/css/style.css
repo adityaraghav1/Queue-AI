@@ -1,58 +1,58 @@
 /* ==========================================================================
-   QueueAI Design System — Porcelain & Cobalt
-   Shared Tokens, Typography, Primitives & Authentication Layout
+   QueueAI Design System — Midnight Navy & Electric Royal Blue
+   Matched to the QueueAI SaaS Dashboard Visual Identity
    ========================================================================== */
 
 :root {
-    /* Surface & Canvas Hierarchy (60 / 30 / 10) */
-    --bg-canvas: #f8fafc;
+    /* Canvas & Surfaces */
+    --bg-canvas: #f4f7fc;
     --bg-surface: #ffffff;
-    --bg-subtle: #f1f5f9;
-    --bg-muted: #e2e8f0;
+    --bg-subtle: #f1f5fb;
+    --bg-muted: #e5eaf2;
 
-    /* Dark Anchor Rail (Auth Showcase & Dashboard Sidebar) */
-    --bg-rail: #0f172a;
-    --bg-rail-elevated: #1e293b;
-    --bg-rail-hover: rgba(255, 255, 255, 0.06);
-    --bg-rail-active: rgba(37, 99, 235, 0.22);
+    /* Midnight Navy Anchor (Auth Left Panel & Dashboard Sidebar) */
+    --bg-rail: #0b132b;
+    --bg-rail-elevated: #131e3a;
+    --bg-rail-hover: rgba(255, 255, 255, 0.07);
+    --bg-rail-active: #1d56ff;
     --border-rail: rgba(255, 255, 255, 0.1);
 
-    /* Borders & Elevation */
-    --border-subtle: #e2e8f0;
+    /* Borders & Soft Cool Elevation */
+    --border-subtle: #e5eaf2;
     --border-strong: #cbd5e1;
-    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
-    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
-    --shadow-md: 0 10px 28px -6px rgba(15, 23, 42, 0.08), 0 4px 12px -4px rgba(15, 23, 42, 0.04);
-    --shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.18);
+    --shadow-xs: 0 1px 2px rgba(11, 19, 43, 0.04);
+    --shadow-sm: 0 2px 8px rgba(11, 19, 43, 0.05);
+    --shadow-md: 0 14px 36px -10px rgba(15, 23, 42, 0.09), 0 4px 12px -4px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 24px 48px -12px rgba(11, 19, 43, 0.18);
 
-    /* Typography Colors */
+    /* Text Hierarchy */
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #64748b;
     --text-inverse: #f8fafc;
     --text-inverse-muted: #94a3b8;
 
-    /* Brand Accent (Cobalt) */
-    --accent-primary: #2563eb;
-    --accent-primary-hover: #1d4ed8;
-    --accent-primary-active: #1e40af;
-    --accent-primary-soft: #eff6ff;
-    --accent-primary-border: #bfdbfe;
-    --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.16);
+    /* Brand Accent (Electric Royal Blue) */
+    --accent-primary: #1d56ff;
+    --accent-primary-hover: #1545d8;
+    --accent-primary-active: #1037b5;
+    --accent-primary-soft: #eef4ff;
+    --accent-primary-border: #c7d9ff;
+    --focus-ring: 0 0 0 3px rgba(29, 86, 255, 0.16);
 
-    /* AI Insight Accent (Indigo Tint) */
+    /* AI Insight Accent (Soft Periwinkle / Indigo) */
     --ai-bg: #eef2ff;
-    --ai-text: #4338ca;
+    --ai-text: #4f46e5;
     --ai-border: #c7d2fe;
 
-    /* Semantic Status Colors */
-    --status-open-bg: #fef3c7;
-    --status-open-text: #b45309;
-    --status-open-border: #fde68a;
+    /* Semantic Status Colors (Matched to Mockup Badges) */
+    --status-open-bg: #dbeafe;
+    --status-open-text: #1d4ed8;
+    --status-open-border: #bfdbfe;
 
-    --status-progress-bg: #dbeafe;
-    --status-progress-text: #1d4ed8;
-    --status-progress-border: #bfdbfe;
+    --status-progress-bg: #ede9fe;
+    --status-progress-text: #6d28d9;
+    --status-progress-border: #ddd6fe;
 
     --status-resolved-bg: #dcfce7;
     --status-resolved-text: #15803d;
@@ -66,11 +66,11 @@
     --danger-text: #b91c1c;
     --danger-border: #fecaca;
 
-    --warning-bg: #fff7ed;
-    --warning-text: #c2410c;
-    --warning-border: #fed7aa;
+    --warning-bg: #fef3c7;
+    --warning-text: #b45309;
+    --warning-border: #fde68a;
 
-    /* Font Families & Type Scale */
+    /* Typography */
     --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -81,13 +81,13 @@
     --radius-lg: 14px;
     --radius-xl: 18px;
 
-    /* Legacy Token Aliases (for safe incremental rollout) */
+    /* Legacy Aliases */
     --bg-primary: var(--bg-canvas);
     --bg-secondary: var(--bg-rail);
     --bg-card: var(--bg-surface);
     --border: var(--border-subtle);
     --blue: var(--accent-primary);
-    --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    --gradient: linear-gradient(135deg, #2563eb 0%, #1d56ff 100%);
 }
 
 /* ---------- Reset & Base ---------- */
@@ -121,7 +121,7 @@ body {
 }
 
 ::selection {
-    background: rgba(37, 99, 235, 0.16);
+    background: rgba(29, 86, 255, 0.16);
     color: var(--text-primary);
 }
 
@@ -152,7 +152,7 @@ textarea:focus-visible {
 .brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
     width: fit-content;
     font-family: var(--font-display);
     font-size: 20px;
@@ -167,17 +167,17 @@ textarea:focus-visible {
     width: 34px;
     height: 34px;
     flex-shrink: 0;
-    border-radius: 9px;
-    background: var(--gradient);
-    color: #ffffff;
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--accent-primary);
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 800;
-    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.32);
+    box-shadow: 0 4px 12px rgba(11, 19, 43, 0.22);
 }
 
 .brand-highlight {
-    color: #60a5fa;
+    color: #93c5fd;
 }
 
 /* ---------- Shared Buttons ---------- */
@@ -200,7 +200,7 @@ textarea:focus-visible {
     line-height: 1;
     cursor: pointer;
     white-space: nowrap;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    box-shadow: 0 4px 12px rgba(29, 86, 255, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.16);
     transition:
         background-color 0.16s cubic-bezier(0.16, 1, 0.3, 1),
         transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
@@ -210,7 +210,7 @@ textarea:focus-visible {
 .primary-button:hover:not(:disabled) {
     background: var(--accent-primary-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px -4px rgba(37, 99, 235, 0.38);
+    box-shadow: 0 8px 20px -4px rgba(29, 86, 255, 0.36);
 }
 
 .primary-button:active:not(:disabled) {
@@ -355,11 +355,11 @@ textarea:focus-visible {
 
 .login-layout {
     display: grid;
-    grid-template-columns: minmax(420px, 0.95fr) 1.05fr;
+    grid-template-columns: minmax(420px, 0.94fr) 1.06fr;
     min-height: 100vh;
 }
 
-/* ---------- Left Showcase Panel (Deep Slate Anchor) ---------- */
+/* ---------- Left Showcase Panel (Midnight Navy Anchor) ---------- */
 
 .brand-panel {
     position: relative;
@@ -370,30 +370,29 @@ textarea:focus-visible {
     overflow: hidden;
     color: var(--text-inverse);
     background:
-        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.22) 0%, transparent 46%),
-        radial-gradient(circle at 90% 85%, rgba(56, 189, 248, 0.1) 0%, transparent 42%),
+        radial-gradient(circle at 12% 14%, rgba(29, 86, 255, 0.28) 0%, transparent 48%),
+        radial-gradient(circle at 92% 86%, rgba(99, 102, 241, 0.18) 0%, transparent 45%),
         var(--bg-rail);
-    border-right: 1px solid rgba(15, 23, 42, 0.15);
+    border-right: 1px solid rgba(11, 19, 43, 0.18);
 }
 
-/* Subtle architectural grid texture */
 .brand-panel::before {
     content: "";
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, transparent 75%);
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse at 30% 40%, #000 18%, transparent 74%);
+    -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 18%, transparent 74%);
     pointer-events: none;
 }
 
 .brand-panel .brand {
     position: relative;
     z-index: 1;
-    color: var(--text-inverse);
+    color: #ffffff;
 }
 
 .hero-content {
@@ -406,21 +405,20 @@ textarea:focus-visible {
 .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    color: #93c5fd;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(29, 86, 255, 0.2);
+    border: 1px solid rgba(147, 197, 253, 0.25);
+    color: #bfdbfe;
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
 }
 
-.status-dot {
-    display: none;
-}
-
 .hero-content h1 {
-    margin: 16px 0 18px;
+    margin: 20px 0 16px;
     font-family: var(--font-display);
     font-size: clamp(34px, 3.6vw, 48px);
     font-weight: 800;
@@ -444,7 +442,7 @@ textarea:focus-visible {
 .feature-list {
     display: grid;
     gap: 14px;
-    margin-top: 36px;
+    margin-top: 34px;
 }
 
 .feature {
@@ -453,14 +451,14 @@ textarea:focus-visible {
     gap: 14px;
     padding: 16px;
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     transition: border-color 0.18s ease, background-color 0.18s ease;
 }
 
 .feature:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(147, 197, 253, 0.25);
 }
 
 .feature-icon {
@@ -470,15 +468,15 @@ textarea:focus-visible {
     width: 38px;
     height: 38px;
     border-radius: 10px;
-    background: rgba(37, 99, 235, 0.2);
-    border: 1px solid rgba(96, 165, 250, 0.25);
+    background: rgba(29, 86, 255, 0.24);
+    border: 1px solid rgba(147, 197, 253, 0.28);
     color: #93c5fd;
-    font-size: 16px;
 }
 
 .feature-icon svg {
     width: 18px;
     height: 18px;
+    display: block;
 }
 
 .feature strong,
@@ -507,7 +505,7 @@ textarea:focus-visible {
     font-size: 12px;
 }
 
-/* ---------- Right Form Panel (Porcelain Canvas + Surface Card) ---------- */
+/* ---------- Right Form Panel (Soft Ice-Blue Canvas + Crisp White Card) ---------- */
 
 .form-panel {
     display: flex;
@@ -515,7 +513,10 @@ textarea:focus-visible {
     align-items: center;
     justify-content: center;
     padding: 48px 7%;
-    background-color: var(--bg-canvas);
+    background:
+        radial-gradient(circle at 88% 12%, rgba(29, 86, 255, 0.08) 0%, transparent 42%),
+        radial-gradient(circle at 12% 88%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+        var(--bg-canvas);
 }
 
 .login-card {
@@ -530,8 +531,13 @@ textarea:focus-visible {
 
 .mobile-brand {
     display: none;
-    margin-bottom: 28px;
+    margin-bottom: 26px;
     color: var(--text-primary);
+}
+
+.mobile-brand .brand-icon {
+    background: var(--accent-primary);
+    color: #ffffff;
 }
 
 .mobile-brand .brand-highlight {
@@ -539,21 +545,24 @@ textarea:focus-visible {
 }
 
 .form-heading {
-    margin-bottom: 26px;
+    margin-bottom: 24px;
 }
 
 .welcome-label {
     display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-primary-soft);
     color: var(--accent-primary);
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
 }
 
 .form-heading h2 {
-    margin: 8px 0 6px;
+    margin: 12px 0 6px;
     color: var(--text-primary);
     font-family: var(--font-display);
     font-size: 26px;
@@ -624,10 +633,11 @@ textarea:focus-visible {
     height: 14px;
     color: var(--accent-primary);
     flex-shrink: 0;
+    display: block;
 }
 
 .copyright {
-    margin-top: 28px;
+    margin-top: 26px;
     color: var(--text-muted);
     font-size: 12px;
     text-align: center;
