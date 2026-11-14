@@ -37,3 +37,61 @@ QueueAI streamlines customer support by automatically analyzing incoming tickets
 ```bash
 git clone https://github.com/adityaraghav1/Queue-AI.git
 cd Queue-AI
+```
+
+### 2. Create and activate a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+- **Windows:** `.venv\Scripts\activate`
+- **macOS / Linux:** `source .venv/bin/activate`
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file in the project root (see `.env.example` for optional SMTP email settings):
+
+```env
+DATABASE_URL=sqlite:///./queueai.db
+SECRET_KEY=your_secret_key
+GROQ_API_KEY=your_groq_api_key
+```
+
+### 5. Run the server
+
+```bash
+uvicorn app.main:app --reload
+```
+
+- App: `http://127.0.0.1:8000`
+- Interactive API Docs (Swagger): `http://127.0.0.1:8000/docs`
+
+## Project Structure
+
+```text
+Queue-AI/
+├── app/
+│   ├── models/        # SQLAlchemy database models
+│   ├── routes/        # Auth, ticket, and page routes
+│   ├── schemas/       # Pydantic request/response schemas
+│   ├── services/      # AI triage and email services
+│   ├── static/        # CSS, JS, and favicon assets
+│   ├── templates/     # HTML views (login, register, dashboards)
+│   ├── database.py    # Database session & engine setup
+│   └── main.py        # FastAPI application entry point
+├── tests/             # Automated tests
+├── .env.example
+├── requirements.txt
+└── README.md
+```
+
+## Author
+
+**Aditya Raghav** 
