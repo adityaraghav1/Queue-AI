@@ -1,104 +1,39 @@
-# QueueAI 🎫
-### AI-Powered Support Ticket Management System
+# QueueAI
 
-QueueAI is an AI-powered support ticket management system built using FastAPI. It helps support teams efficiently manage customer complaints by automating ticket classification, priority detection, sentiment analysis, and response suggestions.
+AI-powered customer support ticket management and triage platform built with **FastAPI**, **Groq**, and a responsive vanilla **HTML / CSS / JavaScript** frontend.
 
-## 🚀 Live Demo
+**Live Demo:** [queueai-mhlw.onrender.com](https://queueai-mhlw.onrender.com/)
 
-[**Visit QueueAI**](https://queueai-mhlw.onrender.com/)
+---
 
-## Features
+## Overview
 
-- **User Authentication:** Secure registration and login using JWT authentication.
-- **Role-Based Access Control:** Separate access and permissions for customers and administrators.
-- **Ticket Management:** Create, view, and track support tickets.
-- **AI Ticket Triage:** Automatically analyze tickets to identify category, priority, and customer sentiment.
-- **AI Response Suggestions:** Generate suggested responses to customer complaints.
-- **Admin Dashboard:** View all tickets, monitor ticket statistics, and manage ticket statuses.
-- **Email Notifications:** Automated email notifications for important ticket updates.
-- **Responsive Interface:** Clean dashboard interface for customers and administrators.
+QueueAI streamlines customer support by automatically analyzing incoming tickets—detecting category, priority, and sentiment—and generating draft replies for support administrators to review, edit, and send.
 
-##  Tech Stack
+## Key Features
 
-| Technology | Purpose |
+- **JWT Authentication & Role-Based Access:** Separate workspaces and permissions for customers and administrators.
+- **Customer Dashboard:** Submit support tickets, view real-time ticket metrics, and track status updates (`Open`, `In Progress`, `Resolved`, `Closed`).
+- **AI Ticket Triage:** Automatically classifies category, urgency/priority, and sentiment on ticket creation using the Groq API.
+- **AI Response Drafts:** Generates suggested replies for each ticket inside the admin review modal.
+- **Admin Console:** Monitor overall ticket metrics, inspect customer requests, update ticket statuses, and publish final responses.
+- **Email Notifications:** Sends automated email updates to customers when a ticket is resolved.
+
+## Tech Stack
+
+| Layer | Technology |
 |---|---|
-| Python | Backend programming |
-| FastAPI | REST API development |
-| SQLAlchemy | Database ORM |
-| SQLite | Database |
-| JWT | Authentication |
-| Groq API | AI-powered ticket analysis |
-| HTML, CSS, JavaScript | Frontend |
-| Render | Deployment |
+| Backend | Python, FastAPI |
+| Database | SQLAlchemy, SQLite |
+| Auth | JWT (Bearer tokens) |
+| AI Triage | Groq API |
+| Frontend | HTML5, CSS3, Vanilla JavaScript |
+| Hosting | Render |
 
-
-## ⚙️ Installation & Setup
+## Local Setup
 
 ### 1. Clone the repository
 
 ```bash
 git clone https://github.com/adityaraghav1/Queue-AI.git
 cd Queue-AI
-```
-
-### 2. Create and activate virtual environment
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Configure environment variables
-
-Create a `.env` file in the project root.
-
-```env
-DATABASE_URL=sqlite:///./queueai.db
-SECRET_KEY=your_secret_key
-GROQ_API_KEY=your_groq_api_key
-```
-
-Add SMTP configuration if email notifications are enabled.
-
-### 5. Start the application
-
-```bash
-uvicorn app.main:app --reload
-```
-
-Visit **http://127.0.0.1:8000** to access QueueAI.
-
-API documentation is available at **http://127.0.0.1:8000/docs**.
-
-## 📂 Project Structure
-
-```text
-Queue-AI/
-├── app/
-│   ├── routes/
-│   ├── models/
-│   ├── schemas/
-│   ├── services/
-│   ├── templates/
-│   ├── static/
-│   ├── database.py
-│   └── main.py
-├── tests/
-├── requirements.txt
-├── .env.example
-└── README.md
-```
-
-## 👨‍💻 Author
-
-**Aditya Raghav**
-
----
-
-⭐ If you find QueueAI interesting, consider giving this repository a star!
