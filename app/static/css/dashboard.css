@@ -480,8 +480,15 @@
 
 /* ---------- Dashboard Messages ---------- */
 
-.dashboard-main .message {
-    margin: 16px 24px 0;
+.tickets-panel .message {
+    margin: 16px 24px;
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.tickets-panel .message:not(:empty) + .table-wrapper {
+    border-top: 1px solid var(--border-subtle);
 }
 
 .dashboard-main > .message {
@@ -527,7 +534,11 @@
     vertical-align: middle;
 }
 
-.tickets-table td:last-child {
+.tickets-panel .tickets-table td:nth-child(2) {
+    text-transform: capitalize;
+}
+
+.tickets-panel .tickets-table td:last-child {
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--text-muted);
@@ -896,8 +907,8 @@
         padding: 16px;
     }
 
-    .dashboard-main .message {
-        margin: 14px 16px 0;
+    .tickets-panel .message {
+        margin: 14px 16px;
     }
 
     .tickets-table th,
