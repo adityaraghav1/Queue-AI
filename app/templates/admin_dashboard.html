@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QueueAI | Admin Dashboard</title>
+    <title>Admin Dashboard | QueueAI</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/dashboard.css">
-    <link rel="stylesheet" href="/static/css/admin_dashboard.css">
+    <link rel="stylesheet" href="/static/css/style.css?v=3">
+    <link rel="stylesheet" href="/static/css/dashboard.css?v=3">
+    <link rel="stylesheet" href="/static/css/admin_dashboard.css?v=2">
 </head>
 
 <body class="dashboard-body">
@@ -19,21 +20,35 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-icon">Q</div>
-                <span>QueueAI</span>
-            </div>
+            <a href="/admin-dashboard" class="brand">
+                <span class="brand-icon">Q</span>
+                <span>Queue<span class="brand-highlight">AI</span></span>
+            </a>
 
-            <div class="sidebar-label">ADMIN PANEL</div>
+            <div class="sidebar-label">Admin Panel</div>
 
             <nav class="sidebar-nav">
                 <a href="/admin-dashboard" class="nav-link active">
-                    <span>▦</span>
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="9" rx="1.5"/>
+                            <rect x="14" y="3" width="7" height="5" rx="1.5"/>
+                            <rect x="14" y="12" width="7" height="9" rx="1.5"/>
+                            <rect x="3" y="16" width="7" height="5" rx="1.5"/>
+                        </svg>
+                    </span>
                     <span>Overview</span>
                 </a>
 
                 <a href="#tickets-section" class="nav-link">
-                    <span>▤</span>
+                    <span class="nav-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </span>
                     <span>All Tickets</span>
                 </a>
             </nav>
@@ -49,38 +64,37 @@
                     </div>
                 </div>
 
-                <button
-                    type="button"
-                    class="logout-button"
-                    id="admin-logout-button"
-                >
-                    Sign Out
+                <button type="button" class="logout-button" id="admin-logout-button">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <polyline points="16 17 21 12 16 7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    <span>Sign Out</span>
                 </button>
             </div>
         </aside>
-
 
         <!-- Main Content -->
         <main class="dashboard-main">
 
             <header class="dashboard-header">
                 <div>
-                    <p class="eyebrow">QUEUEAI MANAGEMENT</p>
+                    <p class="eyebrow">QueueAI Management</p>
                     <h1>Admin Dashboard</h1>
                     <p class="header-description">
-                        Manage customer support tickets from one place.
+                        Manage customer support tickets, review AI drafts, and publish final responses.
                     </p>
                 </div>
 
-                <button
-                    type="button"
-                    class="primary-button"
-                    id="admin-refresh-button"
-                >
-                    ↻ Refresh Tickets
+                <button type="button" class="primary-button" id="admin-refresh-button">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="23 4 23 10 17 10"/>
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                    </svg>
+                    <span>Refresh Tickets</span>
                 </button>
             </header>
-
 
             <!-- Dashboard Messages -->
             <div
@@ -90,14 +104,20 @@
                 aria-live="polite"
             ></div>
 
-
             <!-- Statistics -->
             <section class="stats-grid">
 
                 <article class="stat-card">
                     <div class="stat-heading">
                         <span>Total Tickets</span>
-                        <span class="stat-icon">▤</span>
+                        <span class="stat-icon blue-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                                <path d="M13 5v2"/>
+                                <path d="M13 17v2"/>
+                                <path d="M13 11v2"/>
+                            </svg>
+                        </span>
                     </div>
                     <h2 id="admin-total-tickets">0</h2>
                     <p>All customer tickets</p>
@@ -106,7 +126,12 @@
                 <article class="stat-card">
                     <div class="stat-heading">
                         <span>Open</span>
-                        <span class="stat-icon">◷</span>
+                        <span class="stat-icon purple-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"/>
+                                <polyline points="12 7 12 12 15 14"/>
+                            </svg>
+                        </span>
                     </div>
                     <h2 id="admin-open-tickets">0</h2>
                     <p>Awaiting action</p>
@@ -115,7 +140,12 @@
                 <article class="stat-card">
                     <div class="stat-heading">
                         <span>In Progress</span>
-                        <span class="stat-icon">↻</span>
+                        <span class="stat-icon orange-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                                <polyline points="21 3 21 9 15 9"/>
+                            </svg>
+                        </span>
                     </div>
                     <h2 id="admin-progress-tickets">0</h2>
                     <p>Currently being handled</p>
@@ -124,7 +154,12 @@
                 <article class="stat-card">
                     <div class="stat-heading">
                         <span>Resolved</span>
-                        <span class="stat-icon">✓</span>
+                        <span class="stat-icon green-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
                     </div>
                     <h2 id="admin-resolved-tickets">0</h2>
                     <p>Successfully resolved</p>
@@ -132,14 +167,23 @@
 
             </section>
 
-
             <!-- All Tickets -->
             <section class="tickets-section" id="tickets-section">
 
                 <div class="section-heading">
-                    <div>
-                        <h2>All Support Tickets</h2>
-                        <p>Review and manage customer requests.</p>
+                    <div class="section-heading-title">
+                        <span class="section-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h2>All Support Tickets</h2>
+                            <p>Review and manage incoming customer requests.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -169,10 +213,13 @@
 
             </section>
 
+            <footer class="dashboard-footer">
+                QueueAI · Admin Support Console
+            </footer>
+
         </main>
 
     </div>
-
 
     <!-- Ticket Details Modal -->
     <div
@@ -189,7 +236,7 @@
 
             <div class="modal-header">
                 <div>
-                    <p class="eyebrow">TICKET MANAGEMENT</p>
+                    <p class="eyebrow">Ticket Management</p>
                     <h2 id="admin-modal-title">Ticket Details</h2>
                 </div>
 
@@ -199,17 +246,38 @@
                     id="admin-close-modal"
                     aria-label="Close ticket details"
                 >
-                    &times;
+                    ×
                 </button>
             </div>
 
             <div class="admin-ticket-details">
-                <p><strong>Customer:</strong> <span id="detail-customer">—</span></p>
-                <p><strong>Subject:</strong> <span id="detail-subject">—</span></p>
-                <p><strong>Description:</strong></p>
-                <div class="ticket-description-box" id="detail-description"></div>
-                <p><strong>AI Suggested Response:</strong></p>
-                <div class="ticket-description-box" id="detail-suggestion"></div>
+                <div class="admin-detail-meta">
+                    <p><strong>Customer</strong> <span id="detail-customer">—</span></p>
+                    <p><strong>Subject</strong> <span id="detail-subject">—</span></p>
+                </div>
+
+                <div class="detail-block">
+                    <p class="detail-block-label">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        <span>Description</span>
+                    </p>
+                    <div class="ticket-description-box" id="detail-description"></div>
+                </div>
+
+                <div class="detail-block">
+                    <p class="detail-block-label detail-block-label--ai">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9L12 3z"/>
+                        </svg>
+                        <span>AI Suggested Response</span>
+                    </p>
+                    <div class="ticket-description-box ticket-description-box--ai" id="detail-suggestion"></div>
+                </div>
             </div>
 
             <form id="admin-ticket-form">
@@ -266,7 +334,6 @@
 
         </section>
     </div>
-
 
     <script src="/static/js/admin_dashboard.js"></script>
 
